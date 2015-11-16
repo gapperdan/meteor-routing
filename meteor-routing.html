@@ -1,0 +1,56 @@
+<head>
+  <title>Meteor routing sample</title>
+</head>
+<body>
+</body>
+<!-- main template for header + footer -->
+<template name="main">
+    <h1>Routing Demo</h1>
+    <a href="{{ pathFor 'home'}}">home</a>
+    <!-- yield is a content placeholder that changes for every route -->
+    {{> yield}}
+    <hr />
+    <p>Big Footer is not real!</p>
+</template>
+
+<!-- /home -->
+<template name="home">
+  <p>This is the home page</p>
+  <nav>
+    <ul>
+      <li><a href="{{ pathFor 'foo' }}">foo (client route)</a></li>
+      <li><a href="{{ pathFor 'bar' }}">bar (server route)</a></li>
+      <li><a href="/baz/hello/qux/world">baz (server route with url params)</a></li>
+      <li><a href="/corge/bar?q=baz#somehash">corge (server route with url param, query param and hash param)</a></li>
+    </ul>
+  </nav>
+</template>
+
+<!-- /foo  -->
+<template name="foo">
+  <p>This is foo</p>
+</template>
+
+<!-- /bar  -->
+<template name="bar">
+  <p>This is bar</p>
+</template>
+
+<!-- /baz/hello/qux/world -->
+<template name="baz">
+  <p>This is baz</p>
+  <ul>
+    <li>baz = {{baz}}</li>
+    <li>qux = {{qux}}</li>
+  </ul>
+</template>
+
+<!-- /corge/bar?q=baz#somehash -->
+<template name="corge">
+  <p>This is corge</p>
+  <ul>
+    <li>foo = {{foo}}</li>
+    <li>q = {{query}}</li>
+    <li># = {{hash}}</li>
+  </ul>
+</template>
